@@ -7,4 +7,4 @@ for VLSI workflows.
 🔹 Practical EDA-focused examples  
 🔹 Built as part of my VLSI learning journey  
 
-📄 Live website: (will add after hosting)
+📄 Live website: <https://voonnasampath.github.io/Linux-Commands/>
