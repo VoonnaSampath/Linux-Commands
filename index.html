@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Powerful Linux commands Usefull for VLSI Design Tasks</title>
+  <title>Powerful Linux commands Useful for VLSI Design Tasks</title>
   <style>
     @page {
       size: A4;
@@ -45,10 +45,10 @@
 
     section {
       background: white;
-      padding: 25px;
-      margin-top: 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 15px;
+      margin-top: 5px;
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
     }
 
     h2 {
@@ -119,7 +119,7 @@
 <body>
 
 <div class="cover">
-  <h1> Powerful Linux commands Useful <h1>
+  <h1> Powerful Linux Commands Useful <h1>
   <h1> for VLSI Design Tasks </h1> 
   <p class="subtitle">Mastering grep, sed & awk</p>
   <div class="meta">
@@ -242,7 +242,7 @@
     </tr>
     <tr>
       <td><code>sed 's/old/new/' file.v</code></td>
-      <td>Replaces the first occurrence of a signal or module name (old) with (new) in each line of a Verilog file </td>
+      <td>Replaces the first occurrence of a signal or module name (old) with (new) in each line of the Verilog file </td>
     </tr>
     <tr>
       <td><code>sed 's/old/new/g' file.v</code></td>
@@ -258,11 +258,11 @@
     </tr>
     <tr>
       <td><code>sed '1d' file.log</code></td>
-      <td>Removes the first line (tool header or version info) from an EDA log file </td>
+      <td>Removes the first line (tool header or version info) from the EDA log file </td>
     </tr>
     <tr>
       <td><code>sed '$d' file.log</code></td>
-      <td>Removes the last line (summary or statistics footer) from synthesis or timing logs</td>
+      <td>Removes the last line (summary or statistics footer) from the log file (synthesis or timing) </td>
     </tr>
     <tr>
       <td><code>sed 's/#.*//' script.tcl</code></td>
@@ -274,11 +274,11 @@
     </tr>
     <tr>
       <td><code>sed '/ERROR/d' run.log</code></td>
-      <td>Deletes all ERROR messages from simulation or synthesis logs to isolate warnings or INFO messages</td>
+      <td>Deletes all ERROR messages from simulation or synthesis logs file to isolate warnings or INFO messages</td>
     </tr>
     <tr>
       <td><code>sed -n '/WNS/p' timing.rpt</code></td>
-      <td>Prints only Worst Negative Slack (WNS) related lines from a static timing analysis report</td>
+      <td>Prints only Worst Negative Slack (WNS) related lines from the timing report</td>
     </tr>
     <tr>
       <td><code>sed 's/[[:space:]]\+/ /g' report.txt</code></td>
@@ -302,19 +302,15 @@
     </tr>
     <tr>
       <td><code>awk '{print $1, $3}' report.txt</code></td>
-      <td>Prints selected columns like timing path name and slack value from static timing analysis reports</td>
+      <td>Prints the selected columns like timing path name and slack value from the report</td>
     </tr>
     <tr>
       <td><code>awk '{sum+=$2} END {print sum}' data.txt</code></td>
-      <td>Calculates the total standard-cell area or power by summing a column in the report</td>
+      <td>Calculates the total area or power by summing a column in the report</td>
     </tr>
     <tr>
       <td><code>awk '$3 < 0 {print $0}' timing.rpt</code></td>
       <td>Prints only timing paths with negative slack to identify setup or hold violations</td>
-    </tr>
-    <tr>
-      <td><code>awk 'NR==1{print}' file.txt</code></td>
-      <td>Prints the first line containing column headers of synthesis or timing reports</td>
     </tr>
     <tr>
       <td><code>awk 'END{print NR}' file.txt</code></td>
@@ -322,19 +318,19 @@
     </tr>
     <tr>
       <td><code>awk '{max=($2>max)?$2:max} END{print max}' data.txt</code></td>
-      <td>Finds the maximum value such as worst delay, highest power, or largest area entry</td>
+      <td>Finds the maximum value of the mentioned column such as worst delay, highest power, or largest area entry</td>
     </tr>
     <tr>
       <td><code>awk '{print NR, $0}' file.txt</code></td>
-      <td>Prints line numbers along with report entries for easier debugging and traceability</td>
+      <td>Prints line numbers along with line numbers (report entries) for easier debugging and traceability</td>
     </tr>
     <tr>
       <td><code>awk '{count[$1]++} END {for(i in count) print i, count[i]}' file.txt</code></td>
-      <td>Counts repeated occurrences of cell names, modules, or timing paths in reports</td>
+      <td>Counts repeated occurrences in the mentioned column such as cell names, modules, or timing paths in report</td>
     </tr>
     <tr>
       <td><code>awk '$1=="clk" {print $0}' design.rpt</code></td>
-      <td>Prints only clock-related entries such as clock nets or clock paths from reports</td>
+      <td>In the mentioned column prints only clock-related entries such as clock nets or clock paths from report</td>
     </tr>
     <tr>
       <td><code>awk '{print $1 "\t" $2}' report.txt</code></td>
@@ -346,65 +342,60 @@
 <div class="page-break"></div>
 
 <section>
-  <h2>5 Beginner Shell Scripts That Impress on LinkedIn</h2>
+  <h2>5 Beginner-Level Linux Shell Scripts </h2>
 
-  <h3>1. Error Checker Script</h3>
+  <h3>1.  List and View All DC Reports </h3>
   <pre>
 #!/bin/bash
-LOG_DIR=logs
-OUT_FILE=errors.txt
+cd dc_reports
 
-grep -i "error" $LOG_DIR/*.log > $OUT_FILE
-echo "----------------------" >> $OUT_FILE
-echo "Total Errors:" >> $OUT_FILE
-grep -ic "error" $LOG_DIR/*.log >> $OUT_FILE
-echo "Error report generated"
+echo "Listing all DC report files:"
+ls *.txt
+
+echo "Showing first 10 lines of timing report:"
+head timing.txt
 </pre>
 
-  <h3>2. Daily Project Backup</h3>
+  <h3>2. Find Errors and Warnings from All Reports</h3>
   <pre>
 #!/bin/bash
-PROJECT_DIR=design
-DATE=$(date +%Y%m%d)
-BACKUP_NAME=backup_$DATE.tar.gz
+cd dc_reports
 
-tar -czf $BACKUP_NAME $PROJECT_DIR
-echo "Backup created: $BACKUP_NAME"
-ls -lh $BACKUP_NAME
+echo "Searching for ERROR messages:"
+grep -i "error" *.txt
+
+echo "Searching for WARNING messages:"
+grep -i "warning" *.txt
 </pre>
 
-  <h3>3. Count Verilog Modules</h3>
+  <h3>3. Extract Only Timing Violations</h3>
   <pre>
 #!/bin/bash
-VERILOG_FILES=$(find . -name "*.v")
-MODULE_COUNT=$(echo "$VERILOG_FILES" | xargs grep "module" | wc -l)
+cd dc_reports
 
-echo "Total Verilog files:"
-echo "$VERILOG_FILES" | wc -l
-echo "Total modules:" $MODULE_COUNT
+echo "Extracting negative slack paths..."
+grep "slack" timing.txt | awk '$NF < 0 {print $0}' > neg_slack.txt
+
+echo "Negative slack report created"
+wc -l neg_slack.txt
 </pre>
 
-  <h3>4. Largest Log Files Finder</h3>
+  <h3>4. Clean DC Reports by Removing Extra Spaces</h3>
   <pre>
 #!/bin/bash
-LOG_DIR=logs
+cd dc_reports
 
-echo "Top 5 largest log files:"
-ls -lhS $LOG_DIR/*.log | head -5
-echo "------------------------"
-du -sh $LOG_DIR/*.log
+sed 's/[[:space:]]\+/ /g' area.txt > area_clean.txt
+echo "Cleaned area report generated"
 </pre>
 
-  <h3>5. Timing Slack Extractor</h3>
+  <h3>5. Find All Timing Reports in the Project</h3>
   <pre>
 #!/bin/bash
-INPUT_FILE=timing.rpt
-OUTPUT_FILE=negative_slack.txt
 
-awk '$3 < 0 {print $1, $3}' $INPUT_FILE > $OUTPUT_FILE
-echo "Negative slack paths saved"
-echo "Count:" $(wc -l < $OUTPUT_FILE)
-head -5 $OUTPUT_FILE
+echo "Finding all timing-related reports:"
+find . -name "*timing*.txt"
+
 </pre>
 </section>
 <div class="page-break"></div>
